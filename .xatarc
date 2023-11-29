@@ -1,0 +1,8 @@
+{
+  "databaseURL": "https://hey-s-workspace-f4mudi.eu-west-1.xata.sh/db/kukei",
+  "codegen": {
+    "output": "src/xata.js",
+    "moduleType": "esm",
+    "declarations": true
+  }
+}

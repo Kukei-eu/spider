@@ -1,0 +1,21 @@
+{
+  "name": "kukei-spider",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "repository": "git@github.com:Kukei-eu/spider.git",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "crawl": "node -r dotenv/config src/crawl.js"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.4.4",
+    "@xata.io/client": "^0.28.0",
+    "jsdom": "^23.0.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

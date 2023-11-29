@@ -1,0 +1,39 @@
+{
+  "id": "mig_cljnrp6m4glbc74hd5b0",
+  "checksum": "1:9c543cdd38e28be20761d815cb473b11b07da7abfd309cea0d5f2bd64c45da6a",
+  "operations": [
+    {
+      "addTable": {
+        "table": "index"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "url",
+          "type": "string",
+          "unique": true
+        },
+        "table": "index"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "content",
+          "type": "text"
+        },
+        "table": "index"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "dateCrawled",
+          "type": "datetime"
+        },
+        "table": "index"
+      }
+    }
+  ]
+}
