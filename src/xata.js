@@ -8,7 +8,8 @@ const tables = [
     columns: [
       { name: "url", type: "string", unique: true },
       { name: "content", type: "text" },
-      { name: "dateCrawled", type: "datetime" },
+      { name: "excerpt", type: "text", notNull: true, defaultValue: " " },
+      { name: "title", type: "string" },
     ],
   },
 ];

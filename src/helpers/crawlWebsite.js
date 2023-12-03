@@ -6,7 +6,7 @@ import { get } from 'node:http';
 
 /**
  * Creates sha256 hash from url
- * @param {string} url 
+ * @param {string} url
  * @returns {string}
  */
 const getId = (url) => {
@@ -34,6 +34,8 @@ const crawlPage = async (url) => {
     url,
     links,
     content: article.textContent,
+    excerpt: article.excerpt,
+    title: doc.window.document.title,
   };
 }
 
@@ -43,6 +45,8 @@ const processResult = async (register, result) => {
     id: getId(result.url),
     url: result.url,
     content: result.content,
+    excerpt: result.excerpt,
+    title: result.title,
   };
 
   const docUrl = new URL(result.url);
@@ -83,5 +87,5 @@ export const crawlWebsite = async (rootUrl) => {
     await processResult(register, result);
     await politeWait()
   }
-  
+
 }

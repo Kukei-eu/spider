@@ -17,8 +17,14 @@ declare const tables: readonly [
         readonly type: "text";
       },
       {
-        readonly name: "dateCrawled";
-        readonly type: "datetime";
+        readonly name: "excerpt";
+        readonly type: "text";
+        readonly notNull: true;
+        readonly defaultValue: " ";
+      },
+      {
+        readonly name: "title";
+        readonly type: "string";
       }
     ];
   }
