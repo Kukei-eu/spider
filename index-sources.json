@@ -1,5 +1,11 @@
-[
-  "https://nowicki.io",
-  "https://modernfontstacks.com",
-  "https://developer.mozilla.org/en-US/"
-]
+{
+  "blogs": [
+    [
+      "https://nowicki.io",
+      "https://modernfontstacks.com"
+    ]
+  ],
+  "docs": [
+    "https://developer.mozilla.org/en-US/"
+  ]
+}

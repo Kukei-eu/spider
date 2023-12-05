@@ -7,12 +7,13 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "crawl": "node -r dotenv/config src/crawl.js"
+    "crawl": "node -r dotenv/config src/crawl.js",
+    "manage": "node -r dotenv/config src/manage.js"
   },
   "dependencies": {
     "@mozilla/readability": "^0.4.4",
-    "@xata.io/client": "^0.28.0",
     "jsdom": "^23.0.0",
+    "meilisearch": "^0.36.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

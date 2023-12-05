@@ -1,8 +1,8 @@
 import { Readability } from '@mozilla/readability';
 import { JSDOM } from 'jsdom';
 import { createHash } from 'node:crypto';
-import { getXataClient } from '../xata.js'
-import {normalizeUrl} from "./normalizeUrl.js";
+import { normalizeUrl } from "./normalizeUrl.js";
+import { meiliClient } from "./meili.js";
 
 /**
  * Creates sha256 hash from url
@@ -49,7 +49,7 @@ const crawlPage = async (url) => {
   };
 }
 
-const processResult = async (register, result) => {
+const processResult = async (register, index, result) => {
   register.set(result.url, true);
 
   const indexEntry = {
@@ -75,7 +75,7 @@ const processResult = async (register, result) => {
     }
   }
 
-  await getXataClient().db.index.createOrReplace(indexEntry);
+  await meiliClient.index(index).updateDocuments([indexEntry]);
 }
 
 const getUnprocessedUrl = (register) => {
@@ -87,7 +87,7 @@ const getUnprocessedUrl = (register) => {
 
 const politeWait = (waitTime = 100) => new Promise((resolve) => setTimeout(resolve, waitTime));
 
-export const crawlWebsite = async (rootUrl, waitTime) => {
+export const crawlWebsite = async (rootUrl, index, waitTime) => {
   /**
    * Url -> isCrawled
    * @type {Map<string, boolean>}
@@ -96,7 +96,7 @@ export const crawlWebsite = async (rootUrl, waitTime) => {
 
 
   const firstResult = await crawlPage(rootUrl);
-  await processResult(register, firstResult);
+  await processResult(register, index, firstResult);
 
   let iteration = 0;
   while (getUnprocessedUrl(register)) {
@@ -105,7 +105,7 @@ export const crawlWebsite = async (rootUrl, waitTime) => {
     console.log(`Crawling ${url}, step ${iteration}/${register.size}`);
 
     const result = await crawlPage(url);
-    await processResult(register, result);
+    await processResult(register, index, result);
     await politeWait(waitTime)
   }
 
