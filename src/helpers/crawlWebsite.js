@@ -2,7 +2,7 @@ import { Readability } from '@mozilla/readability';
 import { JSDOM } from 'jsdom';
 import { createHash } from 'node:crypto';
 import { getXataClient } from '../xata.js'
-import { get } from 'node:http';
+import {normalizeUrl} from "./normalizeUrl.js";
 
 /**
  * Creates sha256 hash from url
@@ -18,14 +18,24 @@ const getId = (url) => {
 const crawlPage = async (url) => {
   const fetched = await fetch(url, {
     headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; Kukei.eu-bot/0.1; +https://kukei.eu)',
+      'User-Agent': 'Mozilla/5.0 (compatible; Kukei.eu/Bot/0.1; +https://kukei.eu)',
     },
   });
 
   const content = await fetched.text();
   const doc = new JSDOM(content, { url });
   const linksElements = doc.window.document.querySelectorAll('a')
-  const links = [...linksElements].map((link) => link.href);
+  const links = [...linksElements].reduce((acc, curr) => {
+    try {
+      const url = new URL(curr.href);
+
+      acc.push(`${url.origin}${url.pathname}`);
+    } catch (error) {
+
+    } finally {
+      return acc;
+    }
+  }, []);
 
   const reader = new Readability(doc.window.document);
   const article = reader.parse();
@@ -33,14 +43,15 @@ const crawlPage = async (url) => {
   return {
     url,
     links,
-    content: article.textContent,
-    excerpt: article.excerpt,
+    content: article?.textContent ?? '',
+    excerpt: article?.excerpt ?? '',
     title: doc.window.document.title,
   };
 }
 
 const processResult = async (register, result) => {
   register.set(result.url, true);
+
   const indexEntry = {
     id: getId(result.url),
     url: result.url,
@@ -52,11 +63,16 @@ const processResult = async (register, result) => {
   const docUrl = new URL(result.url);
 
   for (const link of result.links) {
-    const linkUrl = new URL(link);
-    if (linkUrl.origin !== docUrl.origin) continue;
-    const normalizedLink = link.replace(/\/$/, '');
-    if (register.has(normalizedLink)) continue;
-    register.set(link, false);
+    try {
+      const linkUrl = new URL(link);
+      if (linkUrl.origin !== docUrl.origin) continue;
+
+      const normalizedLink = normalizeUrl(link);
+      if (register.has(normalizedLink)) continue;
+      register.set(normalizedLink, false);
+    } catch (error) {
+      console.log(`Could not process link`, link, error);
+    }
   }
 
   await getXataClient().db.index.createOrReplace(indexEntry);
@@ -69,23 +85,28 @@ const getUnprocessedUrl = (register) => {
   return null;
 }
 
-const politeWait = () => new Promise((resolve) => setTimeout(resolve, 100));
+const politeWait = (waitTime = 100) => new Promise((resolve) => setTimeout(resolve, waitTime));
 
-export const crawlWebsite = async (rootUrl) => {
+export const crawlWebsite = async (rootUrl, waitTime) => {
   /**
    * Url -> isCrawled
    * @type {Map<string, boolean>}
    */
   const register = new Map()
 
+
   const firstResult = await crawlPage(rootUrl);
   await processResult(register, firstResult);
 
+  let iteration = 0;
   while (getUnprocessedUrl(register)) {
+    iteration++;
     const url = getUnprocessedUrl(register);
+    console.log(`Crawling ${url}, step ${iteration}/${register.size}`);
+
     const result = await crawlPage(url);
     await processResult(register, result);
-    await politeWait()
+    await politeWait(waitTime)
   }
 
 }
