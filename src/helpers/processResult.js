@@ -1,5 +1,12 @@
+import { createHash } from 'crypto';
 import {normalizeUrl} from './normalizeUrl.js';
 import {meiliClient} from './meili.js';
+
+const getId = (url) => {
+	const hash = createHash('sha256');
+	hash.update(url);
+	return hash.digest('hex');
+};
 
 export const processResult = async (register, index, result) => {
 	register.set(result.url, true);
@@ -20,12 +27,13 @@ export const processResult = async (register, index, result) => {
 	}
 
 	const indexEntry = {
+		id: getId(result.url),
 		url: result.url,
 		content: result.content,
 		excerpt: result.excerpt,
 		title: result.title,
 		lang: result.lang,
-		crawledAt: (new Date()).toISOString(),
+		crawledAt: Date.now(),
 	};
 
 	await meiliClient.index(index).updateDocuments([indexEntry]);

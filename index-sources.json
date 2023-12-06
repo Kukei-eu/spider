@@ -6,6 +6,8 @@
     ]
   ],
   "docs": [
-    "https://developer.mozilla.org/en-US/"
+    "https://developer.mozilla.org/en-US/",
+    "https://example.com",
+    "https://vuejs.org"
   ]
 }
