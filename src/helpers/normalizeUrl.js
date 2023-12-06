@@ -1,3 +1,3 @@
 export const normalizeUrl = (url) => {
-    return url.replace(/\/$/, '');
-}
+	return url.replace(/\/$/, '');
+};
