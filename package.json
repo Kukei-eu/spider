@@ -9,7 +9,8 @@
   "scripts": {
     "crawl": "node -r dotenv/config src/crawl.js",
     "manage": "node -r dotenv/config src/manage.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sandbox": "node -r dotenv/config sandbox.js"
   },
   "dependencies": {
     "@mozilla/readability": "^0.4.4",
