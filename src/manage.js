@@ -3,7 +3,7 @@ import {meiliClient} from './helpers/meili.js';
 
 const indexSettings = {
 	searchableAttributes: ['url', 'title', 'content', 'excerpt'],
-	displayedAttributes: ['title', 'url', 'excerpt', 'content'],
+	displayedAttributes: ['title', 'url', 'excerpt', 'content', 'crawledAt'],
 	filterableAttributes: ['url', 'lang'],
 	distinctAttribute: 'url',
 };
@@ -13,7 +13,6 @@ const main = async () => {
 	// await meiliClient.createIndex('docs');
 
 	await meiliClient.index('blogs').updateSettings(indexSettings);
-
 	await meiliClient.index('docs').updateSettings(indexSettings);
 };
 
