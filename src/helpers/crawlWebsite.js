@@ -41,8 +41,13 @@ export const crawlWebsite = async (rootUrl, index) => {
 
 		console.log(`Crawling ${url}, step ${iteration}/${register.size}`);
 
-		const result = await crawlPage(url);
-		await processResult(register, index, result);
-		await politeWait(robots.politeWait);
+		try {
+			const result = await crawlPage(url);
+			await processResult(register, index, result);
+			await politeWait(robots.politeWait);
+		} catch (error) {
+			console.log('Error while crawling', url, error);
+			register.set(url, true);
+		}
 	}
 };

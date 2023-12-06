@@ -10,6 +10,10 @@ export const crawlPage = async (url) => {
 		},
 	});
 
+	if (!fetched.headers.get('content-type')?.includes('text/html')) {
+		throw new Error('Invalid type');
+	}
+
 	const content = await fetched.text();
 	const doc = new JSDOM(content, { url });
 	const linksElements = doc.window.document.querySelectorAll('a');
