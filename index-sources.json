@@ -1,11 +1,9 @@
 {
   "blogs": [
-    [
-      "https://nowicki.io",
-      "https://modernfontstacks.com",
-      "https://lea.verou.me",
-      "https://evilmartians.com/chronicles"
-    ]
+    "https://nowicki.io",
+    "https://modernfontstacks.com",
+    "https://lea.verou.me",
+    "https://evilmartians.com/chronicles"
   ],
   "docs": [
     "https://developer.mozilla.org/en-US/",

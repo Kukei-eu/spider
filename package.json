@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "crawl": "node -r dotenv/config src/crawl.js",
+    "crawl:all": "node -r dotenv/config src/crawl-all.js",
     "manage": "node -r dotenv/config src/manage.js",
     "lint": "eslint .",
     "sandbox": "node -r dotenv/config sandbox.js"

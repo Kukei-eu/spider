@@ -33,6 +33,7 @@ export const processResult = async (register, index, result) => {
 		excerpt: result.excerpt,
 		title: result.title,
 		lang: result.lang,
+		hostname: docUrl.hostname,
 		crawledAt: Date.now(),
 	};
 

@@ -3,8 +3,8 @@ import {meiliClient} from './helpers/meili.js';
 
 const indexSettings = {
 	searchableAttributes: ['url', 'title', 'content', 'excerpt'],
-	displayedAttributes: ['title', 'url', 'excerpt', 'content', 'crawledAt', 'lang'],
-	filterableAttributes: ['url', 'lang'],
+	displayedAttributes: ['title', 'url', 'excerpt', 'content', 'crawledAt', 'lang', 'hostname'],
+	filterableAttributes: ['url', 'lang', 'hostname'],
 	distinctAttribute: 'url',
 	sortableAttributes: ['crawledAt'],
 };
