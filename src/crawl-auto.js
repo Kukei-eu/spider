@@ -53,11 +53,6 @@ const tryCrawling = async (collection) => {
 		});
 	}
 	await crawlWebsite(oldestFromIndex.url, oldestFromIndex.index, onCrawlCallback);
-
-	await collection.insertOne({
-		...oldestFromIndex,
-		lastCrawledAt: Date.now(),
-	});
 };
 
 const main = async () => {
