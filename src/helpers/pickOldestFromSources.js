@@ -7,7 +7,7 @@ const getDBSources = async (collection) => {
 	}, new Map());
 
 	return sources;
-}
+};
 
 export const pickOldestFromSources = async (collection, repoSources) => {
 	const mongoSources = await getDBSources(collection);
@@ -22,7 +22,7 @@ export const pickOldestFromSources = async (collection, repoSources) => {
 					url,
 					index,
 					lastCrawledAt: 0,
-				}
+				};
 
 				break;
 			}
@@ -34,10 +34,10 @@ export const pickOldestFromSources = async (collection, repoSources) => {
 			}
 
 			if (mongoSource.lastCrawledAt < oldestFromIndex.lastCrawledAt) {
-				oldestFromIndex = source;
+				oldestFromIndex = mongoSource;
 			}
 		}
 	}
 
 	return oldestFromIndex;
-}
+};
