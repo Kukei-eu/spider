@@ -46,7 +46,7 @@ export const crawlPage = async (url) => {
 			// Normalize it.
 			acc.push(`${url.origin}${url.pathname}`);
 		} catch (error) {
-			console.log('Could not parse link', curr.href, error);
+			console.log('Could not parse link', curr.href);
 		} finally {
 			return acc;
 		}
