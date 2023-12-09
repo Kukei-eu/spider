@@ -9,6 +9,7 @@
   "scripts": {
     "crawl": "node -r dotenv/config src/crawl.js",
     "crawl:all": "node -r dotenv/config src/crawl-all.js",
+    "crawl:auto": "node -r dotenv/config src/crawl-auto.js",
     "manage": "node -r dotenv/config src/manage.js",
     "lint": "eslint .",
     "sandbox": "node -r dotenv/config sandbox.js"
@@ -17,6 +18,7 @@
     "@mozilla/readability": "^0.4.4",
     "jsdom": "^23.0.0",
     "meilisearch": "^0.36.0",
+    "mongodb": "^6.3.0",
     "robots-parser": "^3.0.1",
     "yargs": "^17.7.2"
   },

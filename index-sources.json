@@ -7,9 +7,9 @@
     "https://matuzo.at"
   ],
   "docs": [
-    "https://developer.mozilla.org/en-US/",
     "https://example.com",
     "https://vuejs.org",
-    "https://react.dev"
+    "https://react.dev",
+    "https://developer.mozilla.org/en-US/"
   ]
 }
