@@ -4,13 +4,18 @@
     "https://modernfontstacks.com",
     "https://lea.verou.me",
     "https://evilmartians.com/chronicles",
-    "https://matuzo.at"
+    "https://matuzo.at",
+    "https://www.zachleat.com"
   ],
   "docs": [
     "https://example.com",
     "https://vuejs.org",
     "https://react.dev",
-    "https://developer.mozilla.org/en-US/"
+    "https://developer.mozilla.org/en-US/",
+    "https://www.11ty.dev",
+    "https://parceljs.org",
+    "https://vitejs.dev",
+    "https://vitest.dev/guide/comparisons.html"
   ],
   "magazines": [
     "https://smashingmagazine.com"
