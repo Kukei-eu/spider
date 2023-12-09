@@ -12,8 +12,10 @@ const indexSettings = {
 const main = async () => {
 	await meiliClient.createIndex('blogs');
 	await meiliClient.createIndex('docs');
+	await meiliClient.createIndex('magazines');
 	await meiliClient.index('blogs').updateSettings(indexSettings);
 	await meiliClient.index('docs').updateSettings(indexSettings);
+	await meiliClient.index('magazines').updateSettings(indexSettings);
 };
 
 main();
