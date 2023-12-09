@@ -34,7 +34,7 @@ export const processResult = async (register, index, result) => {
 			// Add it to the register as uncrawled.
 			register.set(normalizedLink, false);
 		} catch (error) {
-			console.log('Could not process link', link, error);
+			console.log('Could not process link', link);
 		}
 	}
 
