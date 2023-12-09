@@ -30,9 +30,14 @@ const politeWait = (waitTime = 100) => new Promise((resolve) => setTimeout(resol
  *
  * @param {string} rootUrl
  * @param {string} index
+ * @param {Function} onCrawlCallback
  * @returns {Promise<void>}
  */
-export const crawlWebsite = async (rootUrl, index) => {
+export const crawlWebsite = async (
+	rootUrl,
+	index,
+	onCrawlCallback = async () => {}
+) => {
 	const robots = await getRobots(rootUrl);
 
 	// If UA is not allowed for a root url, let's go away and stop bothering them.
@@ -50,7 +55,7 @@ export const crawlWebsite = async (rootUrl, index) => {
 	const firstResult = await crawlPage(rootUrl, robots);
 	// Takes care of adding urls to register, and adding the first page to the index.
 	await processResult(register, index, firstResult);
-
+	await onCrawlCallback();
 	let iteration = 0;
 	while (getUnprocessedUrl(register)) {
 		iteration++;
@@ -67,6 +72,7 @@ export const crawlWebsite = async (rootUrl, index) => {
 		try {
 			const result = await crawlPage(url);
 			await processResult(register, index, result);
+			await onCrawlCallback();
 			await politeWait(robots.politeWait);
 		} catch (error) {
 			console.log('Error while crawling', url, error);

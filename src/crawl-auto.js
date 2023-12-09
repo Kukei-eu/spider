@@ -6,7 +6,7 @@ import {crawlWebsite} from "./helpers/crawlWebsite.js";
 const getDb = async () => {
 	const client = new MongoClient(process.env.MONGO_URI);
 	await client.connect();
-	const db = await client.db(process.env.MONGO_DB);
+	const db = await client.db(process.env.MONGO_DATABASE);
 	const collection = await db.collection(process.env.MONGO_COLLECTION);
 
 	return [client, collection];
@@ -28,12 +28,42 @@ const main = async () => {
 		return;
 	}
 
+	await collection.updateOne(
+		{
+			url: oldestFromIndex.url,
+		},
+		{
+			$set: {
+				...oldestFromIndex,
+				lastCrawledAt: Date.now(),
+			},
+		},
+		{
+			upsert: true,
+		}
+	);
+
 	console.log(`
 		Crawling ${oldestFromIndex.url} from ${oldestFromIndex.index},
 	 	last crawled at ${oldestFromIndex.lastCrawledAt ? (new Date(oldestFromIndex.lastCrawledAt)).toISOString() : 'never'}.
 	`);
 
-	await crawlWebsite(oldestFromIndex.url, oldestFromIndex.index);
+	/**
+	 * Sets lastCrawledAt to now after every contact to crawled website.
+	 * This way as long as some crawler is running, we would never crawl the same website twice.
+	 * If crawler dies for some reason in the middle of crawling, we would crawl it again after 24 hours.
+	 */
+	const onCrawlCallback = async () => {
+		await collection.updateOne({
+			url: oldestFromIndex.url,
+			index: oldestFromIndex.index,
+		}, {
+			$set: {
+				lastCrawledAt: Date.now(),
+			},
+		});
+	}
+	await crawlWebsite(oldestFromIndex.url, oldestFromIndex.index, onCrawlCallback);
 
 	await collection.insertOne({
 		...oldestFromIndex,
