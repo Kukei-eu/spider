@@ -56,7 +56,6 @@ const main = async () => {
 	const onCrawlCallback = async () => {
 		await collection.updateOne({
 			url: oldestFromIndex.url,
-			index: oldestFromIndex.index,
 		}, {
 			$set: {
 				lastCrawledAt: Date.now(),

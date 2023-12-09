@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@mozilla/readability": "^0.4.4",
+    "dotenv": "^16.3.1",
     "jsdom": "^23.0.0",
     "meilisearch": "^0.36.0",
     "mongodb": "^6.3.0",
@@ -23,7 +24,6 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "dotenv": "^16.3.1",
     "eslint": "^8.55.0",
     "eslint-config-minimal-tabs": "^0.0.1"
   }
