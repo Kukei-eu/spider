@@ -31,7 +31,8 @@ export const getRobots = async (rootUrl) => {
 	};
 
 	const robots = robotsParser(`${rootUrlParsed.origin}/robots.txt`, robotsContent);
-	const crawlDelay = robots.getCrawlDelay(KUKEI_BOT_ID) || DEFAULT_POLITE_WAIT;
+	const wait = robots.getCrawlDelay(KUKEI_BOT_ID) || DEFAULT_POLITE_WAIT;
+	const crawlDelay = wait < DEFAULT_POLITE_WAIT ? DEFAULT_POLITE_WAIT : wait;
 
 	return {
 		isAllowed: (url) => robots.isAllowed(url, KUKEI_BOT_ID),
