@@ -11,5 +11,8 @@
     "https://vuejs.org",
     "https://react.dev",
     "https://developer.mozilla.org/en-US/"
+  ],
+  "magazines": [
+    "https://smashingmagazine.com"
   ]
 }
