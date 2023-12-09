@@ -1,22 +1,12 @@
 import {pickOldestFromSources} from './helpers/pickOldestFromSources.js';
-import {MongoClient} from 'mongodb';
 import repoSources from '../index-sources.json' assert { type: 'json' };
 import {crawlWebsite} from "./helpers/crawlWebsite.js";
+import {getDb} from "./helpers/getMongo.js";
 
-const getDb = async () => {
-	const client = new MongoClient(process.env.MONGO_URI);
-	await client.connect();
-	const db = await client.db(process.env.MONGO_DATABASE);
-	const collection = await db.collection(process.env.MONGO_COLLECTION);
-
-	return [client, collection];
-
-}
 
 const MINIMUM_DELAY_BEFORE_CRAWLING_MS = 86400000; // 24 hours
 
-const main = async () => {
-	const [client, collection] = await getDb();
+const tryCrawling = async (collection) => {
 	const oldestFromIndex = await pickOldestFromSources(collection, repoSources);
 
 	if (
@@ -68,6 +58,11 @@ const main = async () => {
 		...oldestFromIndex,
 		lastCrawledAt: Date.now(),
 	});
+};
+
+const main = async () => {
+	const [client, collection] = await getDb();
+	await tryCrawling(collection)
 
 	await client.close();
 };
