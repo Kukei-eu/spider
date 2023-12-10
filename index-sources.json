@@ -24,9 +24,16 @@
     "https://www.typescriptlang.org",
     "https://docs.npmjs.com",
     "https://yarnpkg.com/cli",
-    "https://classic.yarnpkg.com/en/docs"
+    "https://classic.yarnpkg.com/en/docs",
+    "https://svelte.dev",
+    "https://astro.build",
+    "https://nextjs.org",
+    "https://www.gatsbyjs.com",
+    "https://www.netlify.com",
+    "https://developers.cloudflare.com"
   ],
   "magazines": [
-    "https://smashingmagazine.com"
+    "https://smashingmagazine.com",
+    "https://www.digitalocean.com/community/tutorials"
   ]
 }
