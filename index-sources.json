@@ -17,7 +17,14 @@
     "https://www.11ty.dev",
     "https://parceljs.org",
     "https://vitejs.dev",
-    "https://vitest.dev/guide/comparisons.html"
+    "https://vitest.dev/guide/comparisons.html",
+    "https://esbuild.github.io",
+    "https://rollupjs.org",
+    "https://webpack.js.org",
+    "https://www.typescriptlang.org",
+    "https://docs.npmjs.com",
+    "https://yarnpkg.com/cli",
+    "https://classic.yarnpkg.com/en/docs"
   ],
   "magazines": [
     "https://smashingmagazine.com"
