@@ -4,7 +4,7 @@ import {crawlWebsite} from "./helpers/crawlWebsite.js";
 import {getDb} from "./helpers/getMongo.js";
 
 
-const MINIMUM_DELAY_BEFORE_CRAWLING_MS = 86400000; // 24 hours
+const MINIMUM_DELAY_BEFORE_CRAWLING_MS = 86400000 * 2; // 24 hours * 2
 
 const tryCrawling = async (collection) => {
 	const oldestFromIndex = await pickOldestFromSources(collection, repoSources);
