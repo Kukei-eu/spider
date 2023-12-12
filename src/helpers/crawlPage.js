@@ -25,6 +25,7 @@ export const crawlPage = async (url) => {
 		headers: {
 			'User-Agent': KUKEI_BOT_UA,
 		},
+		signal: AbortSignal.timeout(10000), // 10 seconds timeout
 	});
 
 	// If it's not html, we don't index it.
