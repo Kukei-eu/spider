@@ -14,6 +14,15 @@ import {normalizeLang} from './normalizeLang.js';
  * @property {number} crawledAt
  */
 
+const hrefSeemsUseful = (href) => {
+	if (href.startsWith('/')) return true;
+	if (href.startsWith('#')) return false;
+	if (href.startsWith('mailto:')) return false;
+	if (href.startsWith('tel:')) return false;
+	if (href.startsWith('javascript:')) return false;
+	return true;
+};
+
 /**
  * Crawls a page and returns the result.
  * @param {string} url
@@ -42,6 +51,14 @@ export const crawlPage = async (url) => {
 	// Process links
 	const links = [...linksElements].reduce((acc, curr) => {
 		try {
+			const href = curr.href.trim();
+
+			const seemsUseful = hrefSeemsUseful(href);
+			if (seemsUseful === false) {
+				console.log(`Href ${href} seems useless, skipping`);
+				return acc;
+			};
+
 			// Parse the href to URL
 			const url = new URL(curr.href);
 			// Normalize it.
