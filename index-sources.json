@@ -13,7 +13,8 @@
     "https://stevefenton.co.uk",
     "https://tylersticka.com",
     "https://sarajoy.dev",
-    "https://dmitripavlutin.com"
+    "https://dmitripavlutin.com",
+    "https://bradfrost.com"
   ],
   "docs": [
     "https://example.com",
@@ -42,6 +43,7 @@
     "https://smashingmagazine.com",
     "https://www.digitalocean.com/community/tutorials",
     "https://web.dev",
-    "https://dev.to"
+    "https://dev.to",
+    "https://css-tricks.com"
   ]
 }
