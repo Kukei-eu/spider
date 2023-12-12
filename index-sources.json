@@ -16,8 +16,7 @@
     "https://dmitripavlutin.com",
     "https://bradfrost.com",
     "https://khalidabuhakmeh.com",
-    "https://andy-bell.co.uk/",
-    "https://wpostats.com/"
+    "https://johan.hal.se"
   ],
   "docs": [
     "https://example.com",
@@ -40,10 +39,7 @@
     "https://nextjs.org",
     "https://www.gatsbyjs.com",
     "https://www.netlify.com",
-    "https://developers.cloudflare.com",
-    "https://tailwindcss.com/",
-    "https://bun.sh/",
-    "https://sass-lang.com/"
+    "https://developers.cloudflare.com"
   ],
   "magazines": [
     "https://smashingmagazine.com",
