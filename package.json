@@ -12,7 +12,8 @@
     "crawl:auto": "node -r dotenv/config src/crawl-auto.js",
     "manage": "node -r dotenv/config src/manage.js",
     "lint": "eslint .",
-    "sandbox": "node -r dotenv/config sandbox.js"
+    "sandbox": "node -r dotenv/config sandbox.js",
+    "release": "semantic-release"
   },
   "dependencies": {
     "@mozilla/readability": "^0.4.4",
@@ -24,7 +25,13 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
     "eslint": "^8.55.0",
-    "eslint-config-minimal-tabs": "^0.0.1"
+    "eslint-config-minimal-tabs": "^0.0.1",
+    "semantic-release": "^22.0.12"
   }
 }
