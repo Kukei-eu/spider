@@ -1,6 +1,9 @@
 import { createHash } from 'crypto';
 import {normalizeUrl} from './normalizeUrl.js';
 import {meiliClient} from './meili.js';
+import {MEILI_INDEX_PREFIX} from './constants.js';
+import {getRobots} from '../robots.js';
+import { FailedIndexSave } from './errors.js';
 
 const getId = (url) => {
 	const hash = createHash('sha256');
@@ -16,6 +19,8 @@ const getId = (url) => {
  * @returns {Promise<void>}
  */
 export const processResult = async (register, index, result) => {
+	const robots = await getRobots(result.url);
+
 	// Mark the url as crawled.
 	register.set(result.url, true);
 	// Parse the host/parent url for later
@@ -29,6 +34,11 @@ export const processResult = async (register, index, result) => {
 			if (linkUrl.origin !== docUrl.origin) continue;
 			// Further sanitization
 			const normalizedLink = normalizeUrl(link);
+			const allowed = robots.isAllowed(normalizedLink);
+			if (!allowed) {
+				console.log('Robots.txt disallowed crawling of url', normalizedLink);
+				continue;
+			}
 			// If it's already in the register, skip it. #infiniteLoopWarning!
 			if (register.has(normalizedLink)) continue;
 			// Add it to the register as uncrawled.
@@ -50,6 +60,11 @@ export const processResult = async (register, index, result) => {
 		crawledAt: Date.now(),
 	};
 
-	// Add it to the index
-	await meiliClient.index(index).updateDocuments([indexEntry]);
+	try {
+		// Add it to the index
+		await meiliClient.index(`${MEILI_INDEX_PREFIX}${index}`).updateDocuments([indexEntry]);
+	} catch (error) {
+		console.error(`Could not add ${result.url} to index ${index}`, error);
+		throw new FailedIndexSave(`Could not add ${result.url} to index ${index}`);
+	}
 };

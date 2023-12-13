@@ -1,65 +1,89 @@
-import {pickOldestFromSources} from './helpers/pickOldestFromSources.js';
-import repoSources from '../index-sources.json' assert { type: 'json' };
-import {crawlWebsite} from "./helpers/crawlWebsite.js";
-import {getDb} from "./helpers/getMongo.js";
+import {
+	getLastContact,
+	getMongo,
+	markCrawledUrl,
+	markKnownUrls, markRootContacted, registerFailedIndexEntry,
+	removeUrlFromLinks
+} from './helpers/mongoRegister.js';
+import {pickNeverCrawled} from './helpers/pickNeverCrawled.js';
+import {crawlPage} from './helpers/crawlPage.js';
+import {processResult} from './helpers/processResult.js';
+import {getRobots} from './robots.js';
+import {wait} from './helpers/wait.js';
+import { FailedIndexSave } from "./helpers/errors.js";
 
+// 10 minutes max for a process
+const PROCESS_TIME_TO_LIVE_MS =	10 * 60 * 1000;
 
-const MINIMUM_DELAY_BEFORE_CRAWLING_MS = 86400000 * 2; // 24 hours * 2
+const tryCrawling = async (db) => {
+	// Pick something that was never crawled
+	const neverCrawled = await pickNeverCrawled(db);
+	if (!neverCrawled) {
+		console.log('No never crawled links found');
+		return false;
+	}
 
-const tryCrawling = async (collection) => {
-	const oldestFromIndex = await pickOldestFromSources(collection, repoSources);
+	// Check when website was contacted last.
+	const lastCrawled = await getLastContact(db, neverCrawled.rootUrl);
+	const robots = await getRobots(neverCrawled.rootUrl);
 
-	if (
-		oldestFromIndex.lastCrawledAt
-		&& Date.now() - oldestFromIndex.lastCrawledAt < MINIMUM_DELAY_BEFORE_CRAWLING_MS
-	) {
-		console.log('Nothing to crawl. All too fresh.');
+	if (!robots.isAllowed(neverCrawled.url)) {
+		console.log(`Robots.txt disallowed crawling of ${neverCrawled.url}`);
+		await markCrawledUrl(db, neverCrawled.rootUrl, neverCrawled.url, neverCrawled.index);
+		return false;
+	}
 
+	// Calculate how much we need to wait before crawling to avoid flooding website.
+	const waitMs = (lastCrawled - Date.now()) + robots.politeWait;
+	await wait(waitMs);
+
+	// Crawl
+	console.log(`Crawling ${neverCrawled.url} from ${neverCrawled.index}`);
+	let results;
+	try {
+		results = await crawlPage(neverCrawled.url);
+	} catch (error) {
+		console.log('Page errored', error.toString());
+		await removeUrlFromLinks(db, neverCrawled.url);
+		await markRootContacted(db, {
+			url: neverCrawled.rootUrl,
+			index: neverCrawled.index,
+		});
 		return;
 	}
-
-	await collection.updateOne(
-		{
-			url: oldestFromIndex.url,
-		},
-		{
-			$set: {
-				...oldestFromIndex,
-				lastCrawledAt: Date.now(),
-			},
-		},
-		{
-			upsert: true,
+	const register = new Map();
+	try {
+		await processResult(register, neverCrawled.index, results);
+	} catch (error) {
+		if (error instanceof FailedIndexSave) {
+			await registerFailedIndexEntry(db, neverCrawled.index, neverCrawled.url);
+		} else {
+			throw error;
 		}
-	);
-
-	console.log(`
-		Crawling ${oldestFromIndex.url} from ${oldestFromIndex.index},
-	 	last crawled at ${oldestFromIndex.lastCrawledAt ? (new Date(oldestFromIndex.lastCrawledAt)).toISOString() : 'never'}.
-	`);
-
-	/**
-	 * Sets lastCrawledAt to now after every contact to crawled website.
-	 * This way as long as some crawler is running, we would never crawl the same website twice.
-	 * If crawler dies for some reason in the middle of crawling, we would crawl it again after 24 hours.
-	 */
-	const onCrawlCallback = async () => {
-		await collection.updateOne({
-			url: oldestFromIndex.url,
-		}, {
-			$set: {
-				lastCrawledAt: Date.now(),
-			},
-		});
 	}
-	await crawlWebsite(oldestFromIndex.url, oldestFromIndex.index, onCrawlCallback);
+	await markCrawledUrl(db, neverCrawled.rootUrl, neverCrawled.url, neverCrawled.index);
+	await markRootContacted(db, {
+		url: neverCrawled.rootUrl,
+		index: neverCrawled.index,
+	});
+
+	const links = [...register.keys()];
+	await markKnownUrls(db, neverCrawled.rootUrl, neverCrawled.index, links);
 };
 
 const main = async () => {
-	const [client, collection] = await getDb();
-	await tryCrawling(collection)
+	const started = Date.now();
+	const endIn = started + PROCESS_TIME_TO_LIVE_MS;
+
+	const [client, db] = await getMongo();
+	while (Date.now() < endIn) {
+		await tryCrawling(db);
+		// Wait to unlock CPU for other processes.
+		await wait(100);
+	}
 
 	await client.close();
+	console.log('My time has come. Good bye');
 };
 
 main();

@@ -37,9 +37,17 @@ export const crawlPage = async (url) => {
 		signal: AbortSignal.timeout(10000), // 10 seconds timeout
 	});
 
+
 	// If it's not html, we don't index it.
 	if (!fetched.headers.get('content-type')?.includes('text/html')) {
+		console.log('invalid');
+
 		throw new Error('Invalid type');
+	}
+
+	if (!fetched.ok) {
+		console.log(`${url} returned non 200 code, skipping`);
+		throw new Error('Non 200 code');
 	}
 
 	// Let's get the content
@@ -57,7 +65,7 @@ export const crawlPage = async (url) => {
 			if (seemsUseful === false) {
 				console.log(`Href ${href} seems useless, skipping`);
 				return acc;
-			};
+			}
 
 			// Parse the href to URL
 			const url = new URL(curr.href);

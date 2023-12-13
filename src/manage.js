@@ -1,4 +1,5 @@
 import {meiliClient} from './helpers/meili.js';
+import {MEILI_INDEX_PREFIX} from './helpers/constants.js';
 
 
 const indexSettings = {
@@ -10,12 +11,12 @@ const indexSettings = {
 };
 
 const main = async () => {
-	await meiliClient.createIndex('blogs');
-	await meiliClient.createIndex('docs');
-	await meiliClient.createIndex('magazines');
-	await meiliClient.index('blogs').updateSettings(indexSettings);
-	await meiliClient.index('docs').updateSettings(indexSettings);
-	await meiliClient.index('magazines').updateSettings(indexSettings);
+	await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}blogs`);
+	await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}docs`);
+	await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}magazines`);
+	await meiliClient.index(`${MEILI_INDEX_PREFIX}blogs`).updateSettings(indexSettings);
+	await meiliClient.index(`${MEILI_INDEX_PREFIX}docs`).updateSettings(indexSettings);
+	await meiliClient.index(`${MEILI_INDEX_PREFIX}magazines`).updateSettings(indexSettings);
 };
 
 main();
