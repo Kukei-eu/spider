@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
-  "repository": "https://github.com/Kukei-eu/spider.git",
+  "repository": "git@github.com:Kukei-eu/spider.git",
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
