@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Kukei-eu/spider/compare/v1.0.0...v1.1.0) (2023-12-15)
+
+
+### Features
+
+* change crawling design from naive to smarter (one visit per link) ([77b3401](https://github.com/Kukei-eu/spider/commit/77b3401f8b76449f0d7c127da55d3def9fefb41d))
+
 # 1.0.0 (2023-12-13)
 
 
