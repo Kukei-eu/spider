@@ -18,6 +18,7 @@ const PROCESS_TIME_TO_LIVE_MS =	10 * 60 * 1000;
 const tryCrawling = async (db) => {
 	// Pick something that was never crawled
 	const neverCrawled = await pickNeverCrawled(db);
+
 	if (!neverCrawled) {
 		console.log('No never crawled links found');
 		return false;
