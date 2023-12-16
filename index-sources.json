@@ -85,7 +85,8 @@
     "https://www.honeybadger.io",
     "https://www.evanjones.ca",
     "https://tylergaw.com",
-    "https://tobiasahlin.com"
+    "https://tobiasahlin.com",
+    "https://devblogs.microsoft.com"
   ],
   "docs": [
     "https://example.com",
@@ -108,7 +109,17 @@
     "https://nextjs.org",
     "https://www.gatsbyjs.com",
     "https://www.netlify.com",
-    "https://developers.cloudflare.com"
+    "https://developers.cloudflare.com",
+    "https://www.conventionalcommits.org",
+    "https://conventionalcomments.org",
+    "https://learn.microsoft.com",
+    "https://nginx.org",
+    "https://httpd.apache.org",
+    "https://graphql.org",
+    "https://spec.graphql.org/",
+    "https://www.json.org",
+    "https://json-schema.org",
+    "https://bsonspec.org"
   ],
   "magazines": [
     "https://smashingmagazine.com",
