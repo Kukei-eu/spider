@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Kukei-eu/spider/compare/v1.1.0...v1.2.0) (2023-12-16)
+
+
+### Features
+
+* crawl only new sources by default root crawling ([e7abbce](https://github.com/Kukei-eu/spider/commit/e7abbce9a6f5bb699a15fdb5fe2eeadbfbaf402b))
+
 # [1.1.0](https://github.com/Kukei-eu/spider/compare/v1.0.0...v1.1.0) (2023-12-15)
 
 
