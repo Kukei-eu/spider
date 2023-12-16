@@ -2,6 +2,7 @@ import {JSDOM} from 'jsdom';
 import {Readability} from '@mozilla/readability';
 import {KUKEI_BOT_UA} from './constants.js';
 import {normalizeLang} from './normalizeLang.js';
+import { hrefSeemsUseful } from './urlHelpers.js';
 /**
  * @typedef {Object} CrawlResult
  * @property {string} url
@@ -13,15 +14,6 @@ import {normalizeLang} from './normalizeLang.js';
  * @property {string} hostname
  * @property {number} crawledAt
  */
-
-const hrefSeemsUseful = (href) => {
-	if (href.startsWith('/')) return true;
-	if (href.startsWith('#')) return false;
-	if (href.startsWith('mailto:')) return false;
-	if (href.startsWith('tel:')) return false;
-	if (href.startsWith('javascript:')) return false;
-	return true;
-};
 
 /**
  * Crawls a page and returns the result.

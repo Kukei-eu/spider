@@ -10,7 +10,7 @@ import {crawlPage} from './helpers/crawlPage.js';
 import {processResult} from './helpers/processResult.js';
 import {getRobots} from './robots.js';
 import {wait} from './helpers/wait.js';
-import { FailedIndexSave } from "./helpers/errors.js";
+import { FailedIndexSave } from './helpers/errors.js';
 
 // 10 minutes max for a process
 const PROCESS_TIME_TO_LIVE_MS =	10 * 60 * 1000;
