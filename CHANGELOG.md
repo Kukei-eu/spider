@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Kukei-eu/spider/compare/v1.2.0...v1.3.0) (2023-12-16)
+
+
+### Features
+
+* randomize crawler picks to improve performance and avoid many crawlers polite waiting for the same site ([6840766](https://github.com/Kukei-eu/spider/commit/6840766c7690644a3fa43bd39de55bf92e34a81c))
+
 # [1.2.0](https://github.com/Kukei-eu/spider/compare/v1.1.0...v1.2.0) (2023-12-16)
 
 
