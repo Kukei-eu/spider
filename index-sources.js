@@ -108,7 +108,8 @@ export default {
 		'https://nextjs.org',
 		'https://www.gatsbyjs.com',
 		'https://www.netlify.com',
-		'https://developers.cloudflare.com'
+		'https://developers.cloudflare.com',
+		'https://nodejs.org/en'
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
