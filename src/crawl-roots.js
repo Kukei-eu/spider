@@ -5,16 +5,25 @@ import {
 	markKnownUrls,
 	markRootContacted,
 	getMongo,
-	markCrawledUrl
+	markCrawledUrl, isRootUrlKnown
 } from './helpers/mongoRegister.js';
 import {getRobots} from './robots.js';
 import {wait} from './helpers/wait.js';
+
+const all = !!process.argv.find(a => a === '--all');
 
 const main = async () => {
 	const [client, db] = await getMongo();
 
 	for (const index of Object.keys(sources)) {
 		for (const url of sources[index]) {
+			if (!all) {
+				const isKnown = await isRootUrlKnown(db, index, url);
+				if (isKnown) {
+					console.log(`${url} from ${index} already known. Crawler runs without --all flag. Skipping`);
+					continue;
+				}
+			}
 			const robots = await getRobots(url);
 			if (!robots.isAllowed(url)) {
 				console.log(`Robots.txt disallowed crawling of ${url}`);

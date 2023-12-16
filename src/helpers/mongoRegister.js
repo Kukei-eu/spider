@@ -98,3 +98,13 @@ export const registerFailedIndexEntry = async (db, index, url) => {
 		crawledAt: Date.now(),
 	});
 };
+
+export const isRootUrlKnown = async (db, index, url) => {
+	const linksCollection = await getSourcesCollection(db);
+	const result = await linksCollection.findOne({
+		index,
+		url,
+	});
+
+	return !!result;
+};
