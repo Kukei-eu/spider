@@ -124,11 +124,22 @@ export default {
 		'https://www.rust-lang.org',
 		'https://angular.io',
 		'https://www.eleventy.dev',
+		'https://www.conventionalcommits.org',
+		'https://conventionalcomments.org',
+		'https://learn.microsoft.com',
+		'https://nginx.org',
+		'https://httpd.apache.org',
+		'https://graphql.org',
+		'https://spec.graphql.org/',
+		'https://www.json.org',
+		'https://json-schema.org',
+		'https://bsonspec.org'
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
 		'https://www.digitalocean.com/community/tutorials',
 		'https://web.dev',
+		'https://devblogs.microsoft.com',
 		// 'https://dev.to',
 		// 'https://css-tricks.com'
 	]
