@@ -61,13 +61,13 @@ export const crawlPage = async (url) => {
 				return acc;
 			}
 
-			const handFixHref = fixHref(url.origin, curr.href);
+			const handFixHref = fixHref(url, curr.href);
 			// Parse the href to URL
-			const url = new URL(curr.href);
+			const parsedUrl = new URL(handFixHref);
 			// Normalize it.
-			acc.push(`${url.origin}${url.pathname}`);
+			acc.push(`${parsedUrl.origin}${parsedUrl.pathname}`);
 		} catch (error) {
-			console.log('Could not parse link', curr.href);
+			console.log('Could not parse link', curr, error);
 		} finally {
 			return acc;
 		}
