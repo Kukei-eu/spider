@@ -3,7 +3,6 @@ import {Readability} from '@mozilla/readability';
 import {KUKEI_BOT_UA} from './constants.js';
 import {normalizeLang} from './normalizeLang.js';
 import { hrefSeemsUseful } from './urlHelpers.js';
-import { fixHref } from "./fixHref.js";
 
 /**
  * @typedef {Object} CrawlResult
@@ -24,7 +23,7 @@ import { fixHref } from "./fixHref.js";
  */
 export const crawlPage = async (url) => {
 	// Initial fetch
-	const fetched = await fetch(url, {
+	const response = await fetch(url, {
 		headers: {
 			'User-Agent': KUKEI_BOT_UA,
 		},
@@ -33,19 +32,19 @@ export const crawlPage = async (url) => {
 
 
 	// If it's not html, we don't index it.
-	if (!fetched.headers.get('content-type')?.includes('text/html')) {
+	if (!response.headers.get('content-type')?.includes('text/html')) {
 		console.log('invalid');
 
 		throw new Error('Invalid type');
 	}
 
-	if (!fetched.ok) {
+	if (!response.ok) {
 		console.log(`${url} returned non 200 code, skipping`);
 		throw new Error('Non 200 code');
 	}
 
 	// Let's get the content
-	const content = await fetched.text();
+	const content = await response.text();
 	// Parse it almost like a browser would.
 	const doc = new JSDOM(content, { url });
 	// Get all the links from the page.
@@ -61,9 +60,8 @@ export const crawlPage = async (url) => {
 				return acc;
 			}
 
-			const handFixHref = fixHref(url, curr.href);
 			// Parse the href to URL
-			const parsedUrl = new URL(handFixHref);
+			const parsedUrl = new URL(curr.href, url);
 			// Normalize it.
 			acc.push(`${parsedUrl.origin}${parsedUrl.pathname}`);
 		} catch (error) {
@@ -81,6 +79,7 @@ export const crawlPage = async (url) => {
 
 	return {
 		url,
+		resolvedUrl: response.redirected ? response.url: url,
 		links,
 		content: article?.textContent ?? '',
 		excerpt: article?.excerpt ?? '',
