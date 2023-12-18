@@ -1,3 +1,13 @@
+## [1.3.1](https://github.com/Kukei-eu/spider/compare/v1.3.0...v1.3.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* fix apache broken relative links that pollute mongo db ([0da8f67](https://github.com/Kukei-eu/spider/commit/0da8f671e7ba597bed8493e066f55eb624d0d55f))
+* fix apache broken relative links that pollute mongo db ([f6cd234](https://github.com/Kukei-eu/spider/commit/f6cd2340775ed02502e833aad4e16e402ed50d74))
+* proper way of ensuring we're adding redirected url to the index ([c898e7c](https://github.com/Kukei-eu/spider/commit/c898e7c3f82635fe9efdd58d92e680927a3d3df4))
+* skip some huge websites for now ([ce82188](https://github.com/Kukei-eu/spider/commit/ce82188cb4f740486912022bc498dc083dfea0f5))
+
 # [1.3.0](https://github.com/Kukei-eu/spider/compare/v1.2.0...v1.3.0) (2023-12-16)
 
 
