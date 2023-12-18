@@ -126,7 +126,7 @@ export default {
 		'https://www.eleventy.dev',
 		'https://www.conventionalcommits.org',
 		'https://conventionalcomments.org',
-		'https://learn.microsoft.com',
+		// 'https://learn.microsoft.com', 32 million pages! need to check how to do it right
 		'https://nginx.org',
 		'https://httpd.apache.org',
 		'https://graphql.org',
@@ -139,8 +139,8 @@ export default {
 		'https://smashingmagazine.com',
 		'https://www.digitalocean.com/community/tutorials',
 		'https://web.dev',
-		'https://devblogs.microsoft.com',
-		// 'https://dev.to',
-		// 'https://css-tricks.com'
+		// 'https://devblogs.microsoft.com', // Also huge, check later
+		// 'https://dev.to', // mediocre quality, sometimes very low
+		// 'https://css-tricks.com' // big one, continue once having stable index snapshot
 	]
 };
