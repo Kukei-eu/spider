@@ -3,6 +3,8 @@ import {Readability} from '@mozilla/readability';
 import {KUKEI_BOT_UA} from './constants.js';
 import {normalizeLang} from './normalizeLang.js';
 import { hrefSeemsUseful } from './urlHelpers.js';
+import { fixHref } from "./fixHref.js";
+
 /**
  * @typedef {Object} CrawlResult
  * @property {string} url
@@ -59,6 +61,7 @@ export const crawlPage = async (url) => {
 				return acc;
 			}
 
+			const handFixHref = fixHref(url.origin, curr.href);
 			// Parse the href to URL
 			const url = new URL(curr.href);
 			// Normalize it.
