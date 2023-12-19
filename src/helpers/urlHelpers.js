@@ -1,3 +1,24 @@
+const commonExtensions = [
+	'.webp',
+	'.png',
+	'.jpg',
+	'.jpeg',
+	'.gif',
+	'.svg',
+	'.pdf',
+	'.zip',
+	'.rar',
+	'.mp4',
+	'.mp3',
+	'.wav',
+	'.ogg',
+	'.webm',
+	'.flv',
+	'.avi',
+	'.mov',
+	'.wmv',
+];
+
 /**
  * Takes a raw href and decides whether it looks useful in crawling context.
  * @param {string} href
@@ -10,5 +31,8 @@ export const hrefSeemsUseful = (href) => {
 	if (href.startsWith('tel:')) return false;
 	if (href.startsWith('javascript:')) return false;
 	if (href.startsWith('data:')) return false;
+	const hasExtension = commonExtensions.some((ext) => href.endsWith(ext));
+	if (hasExtension) return false;
+
 	return true;
 };
