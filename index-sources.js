@@ -128,7 +128,7 @@ export default {
 		'https://conventionalcomments.org',
 		// 'https://learn.microsoft.com', 32 million pages! need to check how to do it right
 		'https://nginx.org',
-		'https://httpd.apache.org',
+		//'https://httpd.apache.org', // disable for now, it has something seriously wrong with language selector
 		'https://graphql.org',
 		'https://spec.graphql.org/',
 		'https://www.json.org',
