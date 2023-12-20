@@ -31,6 +31,8 @@ export const hrefSeemsUseful = (href) => {
 	if (href.startsWith('tel:')) return false;
 	if (href.startsWith('javascript:')) return false;
 	if (href.startsWith('data:')) return false;
+	if (href.startsWith('chrome-extension:')) return false;
+	if (href.startsWith('vbscript:')) return false;
 	const hasExtension = commonExtensions.some((ext) => href.endsWith(ext));
 	if (hasExtension) return false;
 
