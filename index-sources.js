@@ -85,7 +85,8 @@ export default {
 		'https://www.honeybadger.io',
 		'https://www.evanjones.ca',
 		'https://tylergaw.com',
-		'https://tobiasahlin.com'
+		'https://tobiasahlin.com',
+		'https://www.michaelgale.dev',
 	],
 	'docs': [
 		'https://example.com',
