@@ -6,6 +6,7 @@ services:
     env_file:
       - .env
     command: "yarn crawl:auto"
+    restart: unless-stopped
   crawl-roots:
     build: .
     env_file:
