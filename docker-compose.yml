@@ -11,3 +11,8 @@ services:
     env_file:
       - .env
     command: "yarn crawl:roots"
+  do-stats:
+    build: .
+    env_file:
+      - .env
+    command: "yarn do:stats"

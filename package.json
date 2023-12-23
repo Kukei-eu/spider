@@ -12,6 +12,7 @@
     "crawl:auto": "node -r dotenv/config src/crawl-auto.js",
     "crawl:roots": "node -r dotenv/config src/crawl-roots.js",
     "crawl:roots:all": "node -r dotenv/config src/crawl-roots.js --all",
+    "do:stats": "node -r dotenv/config src/do-stats.js",
     "manage": "node -r dotenv/config src/manage.js",
     "lint": "eslint .",
     "sandbox": "node -r dotenv/config sandbox.js",

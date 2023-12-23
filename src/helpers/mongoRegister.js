@@ -20,6 +20,10 @@ export const getFailedLinksCollection = db => {
 	return db.collection(`${process.env.MONGO_COLLECTION}-failed`);
 };
 
+export const getStatsCollection = db => {
+	return db.collection(`${process.env.MONGO_COLLECTION}-stats`);
+};
+
 
 export const markRootContacted = async (db, data) => {
 	const sources = await getSourcesCollection(db);
