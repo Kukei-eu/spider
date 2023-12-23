@@ -1,7 +1,13 @@
 version: '3'
 services:
   crawl:
+    container_name: spider-crawl
     build: .
     env_file:
       - .env
     command: "yarn crawl:auto"
+  crawl-roots:
+    build: .
+    env_file:
+      - .env
+    command: "yarn crawl:roots"
