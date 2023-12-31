@@ -1,8 +1,5 @@
 import {meiliClient} from './helpers/meili.js';
 import {MEILI_INDEX_PREFIX} from './helpers/constants.js';
-import {getMongo} from './helpers/mongoRegister.js';
-import {wait} from './helpers/wait.js';
-
 
 const indexSettings = {
 	searchableAttributes: ['url', 'title', 'content', 'excerpt'],
