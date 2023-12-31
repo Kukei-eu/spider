@@ -11,6 +11,7 @@ import {processResult} from './helpers/processResult.js';
 import {getRobots} from './robots.js';
 import {wait} from './helpers/wait.js';
 import { FailedIndexSave } from './helpers/errors.js';
+import {isForbidden} from "./helpers/urlHelpers.js";
 
 // 10 minutes max for a process as default
 const DEFAULT_PROCESS_TIME_TO_LIVE_MS = 10 * 60 * 1000;
@@ -32,6 +33,12 @@ const tryCrawling = async (db) => {
 
 	if (!robots.isAllowed(neverCrawled.url)) {
 		console.log(`Robots.txt disallowed crawling of ${neverCrawled.url}`);
+		await markCrawledUrl(db, neverCrawled.rootUrl, neverCrawled.url, neverCrawled.index);
+		return false;
+	}
+
+	if (isForbidden(neverCrawled.url)) {
+		console.log(`Forbidden crawling of ${neverCrawled.url}`);
 		await markCrawledUrl(db, neverCrawled.rootUrl, neverCrawled.url, neverCrawled.index);
 		return false;
 	}
@@ -82,7 +89,7 @@ const main = async () => {
 	while (Date.now() < endIn) {
 		await tryCrawling(db);
 		// Wait to unlock CPU for other processes.
-		await wait(100);
+		await wait(10);
 	}
 
 	await client.close();

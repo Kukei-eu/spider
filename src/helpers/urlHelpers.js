@@ -38,3 +38,9 @@ export const hrefSeemsUseful = (href) => {
 
 	return true;
 };
+
+export const isForbidden = (url) => {
+	if (url.startsWith('https://www.postgresql.org/message-id/')) return true;
+
+	return false;
+};
