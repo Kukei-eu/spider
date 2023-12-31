@@ -19,7 +19,13 @@ const setupIndex = async () => {
 };
 
 const main = async () => {
-	await setupIndex();
+	// await setupIndex();
+
+	console.log(await meiliClient.getTasks({
+		statuses: [
+			'enqueued',
+		]
+	}));
 };
 
 main();
