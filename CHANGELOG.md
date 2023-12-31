@@ -1,3 +1,20 @@
+# [1.4.0](https://github.com/Kukei-eu/spider/compare/v1.3.1...v1.4.0) (2023-12-31)
+
+
+### Bug Fixes
+
+* correct sources link in README (fixes [#3](https://github.com/Kukei-eu/spider/issues/3)) ([6836dec](https://github.com/Kukei-eu/spider/commit/6836decc9a2a751a4c2683a745f7aa7d14cbc9b5))
+* nobody uses it and it's not about security here but why not ignoring vbscript: too ([2adcf01](https://github.com/Kukei-eu/spider/commit/2adcf01fd6f4316f2bd4a667779cd7737a441ccd))
+* skip some huge websites for now ([5bc5857](https://github.com/Kukei-eu/spider/commit/5bc58573a1fcaaf59c79268976d820bd11bc0685))
+
+
+### Features
+
+* gather stats periodically ([28cd583](https://github.com/Kukei-eu/spider/commit/28cd583592d9caa3ce0f7808ecbe37133f6ce208))
+* ignore common assets extensions ([39920ed](https://github.com/Kukei-eu/spider/commit/39920edaccecfc3620aa0c397956ad2eaab78742))
+* ignore postgresql mailing list urls ([2d33b0f](https://github.com/Kukei-eu/spider/commit/2d33b0f66069276fad497fba89c64207c42e8ba2))
+* optional ttl for process ([d9467da](https://github.com/Kukei-eu/spider/commit/d9467da6e6e0b9dcc76595538d9864b45a4e89f5))
+
 ## [1.3.1](https://github.com/Kukei-eu/spider/compare/v1.3.0...v1.3.1) (2023-12-18)
 
 
