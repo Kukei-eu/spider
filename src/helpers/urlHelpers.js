@@ -43,6 +43,7 @@ export const hrefSeemsUseful = (href) => {
 export const isForbidden = (url) => {
 	if (url.startsWith('https://www.postgresql.org/message-id/')) return true;
 	if (url.startsWith('https://www.zachleat.com/twitter/')) return true;
+	if (url.startsWith('https://www.mongodb.com/blog/channel/updates/')) return true;
 
 	return false;
 };
