@@ -134,7 +134,8 @@ export default {
 		'https://spec.graphql.org/',
 		'https://www.json.org',
 		'https://json-schema.org',
-		'https://bsonspec.org'
+		'https://bsonspec.org',
+		'https://www.meilisearch.com'
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
