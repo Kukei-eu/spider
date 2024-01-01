@@ -41,7 +41,7 @@ const main = async () => {
 			await markCrawledUrl(db, url, url, index);
 
 			const links = [...register.keys()];
-			await markKnownUrls(db, url, index, links);
+			await markKnownUrls(db, url, index, links, true);
 
 			await wait(100);
 		}

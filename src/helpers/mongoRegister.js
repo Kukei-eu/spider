@@ -44,7 +44,7 @@ export const markRootContacted = async (db, data) => {
 	);
 };
 
-export const markKnownUrls = async (db, rootUrl, index, urls) => {
+export const markKnownUrls = async (db, rootUrl, index, urls, enforceNewUrl = false) => {
 	const linksCollection = await getSourcesLinksCollection(db);
 	for (const url of urls) {
 		await linksCollection.updateOne({
@@ -54,7 +54,12 @@ export const markKnownUrls = async (db, rootUrl, index, urls) => {
 				url,
 				index,
 				rootUrl,
-			}
+			},
+			... enforceNewUrl ? {
+				$unset: {
+					lastCrawledAt: '',
+				}
+			}: {}
 		}, {
 			upsert: true,
 		});
