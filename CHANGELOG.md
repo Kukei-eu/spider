@@ -1,3 +1,13 @@
+# [1.5.0](https://github.com/Kukei-eu/spider/compare/v1.4.0...v1.5.0) (2024-01-01)
+
+
+### Features
+
+* crawl roots --all ensures one level deep is being crawled again ([bbbc0ee](https://github.com/Kukei-eu/spider/commit/bbbc0ee5f7bfb732cbe59db6dbc89ab59e9be24a))
+* no mongo updates loop ([1ab9a81](https://github.com/Kukei-eu/spider/commit/1ab9a81fc45a19fa61d968b9bfadb00cb152ea94))
+* no mongo updates loop ([ebfdd0b](https://github.com/Kukei-eu/spider/commit/ebfdd0b3d9b29483ddf89e6ea368b404682b9b22))
+* no zachleat twitter archive ([fd239d4](https://github.com/Kukei-eu/spider/commit/fd239d45a6f24f1f45d90b6062a0b52ab9c61fc7))
+
 # [1.4.0](https://github.com/Kukei-eu/spider/compare/v1.3.1...v1.4.0) (2023-12-31)
 
 
