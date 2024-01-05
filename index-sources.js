@@ -87,6 +87,7 @@ export default {
 		'https://tylergaw.com',
 		'https://tobiasahlin.com',
 		'https://www.michaelgale.dev',
+		'https://wizardzines.com',
 	],
 	'docs': [
 		'https://example.com',
