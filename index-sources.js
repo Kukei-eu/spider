@@ -140,6 +140,14 @@ export default {
 		'https://www.meilisearch.com',
 		'https://storybook.js.org',
 		'https://curl.se',
+		'https://plausible.io',
+		'https://docs.simpleanalytics.com',
+		'https://usefathom.com',
+		'https://matomo.org',
+		'https://docs.pirsch.io',
+		'https://developers.piwik.pro',
+		// Enable after cooldown
+		// 'https://developers.google.com',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
