@@ -31,17 +31,21 @@ const main = async () => {
 			}
 			console.log(`Crawling root page of ${url} from ${index}`);
 			const register = new Map();
-			// Crawl root (entry) page for new links
-			const result = await crawlPage(url);
-			await processResult(register, index, result);
-			await markRootContacted(db, {
-				url,
-				index
-			});
-			await markCrawledUrl(db, url, url, index);
+			try {
+				// Crawl root (entry) page for new links
+				const result = await crawlPage(url);
+				await processResult(register, index, result);
+				await markRootContacted(db, {
+					url,
+					index
+				});
+				await markCrawledUrl(db, url, url, index);
 
-			const links = [...register.keys()];
-			await markKnownUrls(db, url, index, links, true);
+				const links = [...register.keys()];
+				await markKnownUrls(db, url, index, links, true);
+			} catch (error) {
+				console.error(`Error while crawling ${url}`, error);
+			}
 
 			await wait(100);
 		}
