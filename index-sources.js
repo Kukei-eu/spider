@@ -88,6 +88,7 @@ export default {
 		'https://tobiasahlin.com',
 		'https://www.michaelgale.dev',
 		'https://wizardzines.com',
+		'https://jvns.ca',
 	],
 	'docs': [
 		'https://example.com',
