@@ -17,7 +17,7 @@ const main = async () => {
 		],
 		{ maxTimeMS: 60000, allowDiskUse: true }
 	).toArray();
-	const unCrawledCount = countResult.unCrawled;
+	const unCrawledCount = countResult?.unCrawled ?? 0;
 
 	const [crawledResult] = await sourcesLinks.aggregate(
 		[
