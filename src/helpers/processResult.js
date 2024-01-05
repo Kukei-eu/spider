@@ -2,7 +2,7 @@ import { createHash } from 'crypto';
 import {normalizeUrl} from './normalizeUrl.js';
 import {meiliClient} from './meili.js';
 import {MEILI_INDEX_PREFIX} from './constants.js';
-import {getRobots} from '../robots.js';
+import {getRobots} from './robots.js';
 import { FailedIndexSave } from './errors.js';
 
 const getId = (url) => {

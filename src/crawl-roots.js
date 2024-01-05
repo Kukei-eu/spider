@@ -7,7 +7,7 @@ import {
 	getMongo,
 	markCrawledUrl, isRootUrlKnown
 } from './helpers/mongoRegister.js';
-import {getRobots} from './robots.js';
+import {getRobots} from './helpers/robots.js';
 import {wait} from './helpers/wait.js';
 
 const all = !!process.argv.find(a => a === '--all');

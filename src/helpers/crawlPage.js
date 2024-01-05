@@ -30,6 +30,7 @@ export const crawlPage = async (url) => {
 		signal: AbortSignal.timeout(10000), // 10 seconds timeout
 	});
 
+	console.log(response.headers);
 
 	// If it's not html, we don't index it.
 	if (!response.headers.get('content-type')?.includes('text/html')) {
@@ -38,7 +39,9 @@ export const crawlPage = async (url) => {
 		throw new Error('Invalid type');
 	}
 
+	console.log(await response.text());
 	if (!response.ok) {
+		console.log(response.status);
 		console.log(`${url} returned non 200 code, skipping`);
 		throw new Error('Non 200 code');
 	}

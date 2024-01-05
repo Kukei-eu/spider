@@ -1,12 +1,16 @@
 import robotsParser from 'robots-parser';
-import {DEFAULT_POLITE_WAIT, KUKEI_BOT_ID} from './helpers/constants.js';
+import {DEFAULT_POLITE_WAIT, KUKEI_BOT_ID, KUKEI_BOT_UA} from './constants.js';
 
 const getRobotsContent = async (url) => {
 	try {
 		const urlParsed = new URL(url);
 		const robotsUrl = `${urlParsed.origin}/robots.txt`;
 
-		const response = await fetch(robotsUrl);
+		const response = await fetch(robotsUrl, {
+			headers: {
+				'User-Agent': KUKEI_BOT_UA,
+			}
+		});
 		if (response.status !== 200) {
 			console.log('Robots returned non 200 code, assuming no robots.txt');
 			return null;

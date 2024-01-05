@@ -8,7 +8,7 @@ import {
 import {pickNeverCrawled} from './helpers/pickNeverCrawled.js';
 import {crawlPage} from './helpers/crawlPage.js';
 import {processResult} from './helpers/processResult.js';
-import {getRobots} from './robots.js';
+import {getRobots} from './helpers/robots.js';
 import {wait} from './helpers/wait.js';
 import { FailedIndexSave } from './helpers/errors.js';
 import {isForbidden} from './helpers/urlHelpers.js';
