@@ -136,7 +136,8 @@ export default {
 		'https://json-schema.org',
 		'https://bsonspec.org',
 		'https://www.meilisearch.com',
-		'https://storybook.js.org'
+		'https://storybook.js.org',
+		'https://curl.se',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
