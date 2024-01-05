@@ -89,6 +89,7 @@ export default {
 		'https://www.michaelgale.dev',
 		'https://wizardzines.com',
 		'https://jvns.ca',
+		'https://alex.party',
 	],
 	'docs': [
 		'https://example.com',
