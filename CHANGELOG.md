@@ -1,3 +1,19 @@
+# [1.6.0](https://github.com/Kukei-eu/spider/compare/v1.5.0...v1.6.0) (2024-01-08)
+
+
+### Bug Fixes
+
+* prevent do-stats from exiting when nothing is uncrawled ([5ea126c](https://github.com/Kukei-eu/spider/commit/5ea126c5784a510dfdad4285a3b006986f027fbd))
+* prevent root crawl from exiting when root returns non 200 ([9606698](https://github.com/Kukei-eu/spider/commit/960669806f8858cfcc7eeb1fffceee773c6abc45))
+* woof, remove debug logs ([40fce69](https://github.com/Kukei-eu/spider/commit/40fce69be08e89120b253a69216701c46e30693e))
+
+
+### Features
+
+* add https://storybook.js.org ([3bd32f2](https://github.com/Kukei-eu/spider/commit/3bd32f22f971e70df9b5305aa1bf8a6af635f928))
+* add meilisearch ([07d4734](https://github.com/Kukei-eu/spider/commit/07d4734d20a95278c3f413631baaa9277fc784a3))
+* ensure robots send proper UA ([3797f47](https://github.com/Kukei-eu/spider/commit/3797f47e949d177765e82b17483d0bc93134a9ed))
+
 # [1.5.0](https://github.com/Kukei-eu/spider/compare/v1.4.0...v1.5.0) (2024-01-01)
 
 
