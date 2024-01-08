@@ -90,6 +90,8 @@ export default {
 		'https://wizardzines.com',
 		'https://jvns.ca',
 		'https://alex.party',
+		'https://brucefwebster.com',
+		'https://www.a11yproject.com'
 	],
 	'docs': [
 		'https://example.com',
