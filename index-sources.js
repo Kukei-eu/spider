@@ -91,7 +91,8 @@ export default {
 		'https://jvns.ca',
 		'https://alex.party',
 		'https://brucefwebster.com',
-		'https://www.a11yproject.com'
+		'https://www.a11yproject.com',
+		'https://betterwebtype.com',
 	],
 	'docs': [
 		'https://example.com',
