@@ -153,8 +153,7 @@ export default {
 		// Enable after cooldown
 		// 'https://developers.google.com',
 		'https://core.telegram.org',
-		// After cooldown
-		// 'https://www.w3.org'
+		'https://www.w3.org',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
