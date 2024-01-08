@@ -151,7 +151,9 @@ export default {
 		'https://developers.piwik.pro',
 		// Enable after cooldown
 		// 'https://developers.google.com',
-		'https://core.telegram.org'
+		'https://core.telegram.org',
+		// After cooldown
+		// 'https://www.w3.org'
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
