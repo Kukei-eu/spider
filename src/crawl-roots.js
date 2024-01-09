@@ -14,12 +14,17 @@ const all = !!process.argv.find(a => a === '--all');
 
 const main = async () => {
 	const [client, db] = await getMongo();
+	let ignored = 0;
+	let added = 0;
+	let forbidden = 0;
+	let errored = 0;
 
 	for (const index of Object.keys(sources)) {
 		for (const url of sources[index]) {
 			if (!all) {
 				const isKnown = await isRootUrlKnown(db, index, url);
 				if (isKnown) {
+					ignored++;
 					console.log(`${url} from ${index} already known. Crawler runs without --all flag. Skipping`);
 					continue;
 				}
@@ -27,6 +32,7 @@ const main = async () => {
 			const robots = await getRobots(url);
 			if (!robots.isAllowed(url)) {
 				console.log(`Robots.txt disallowed crawling of ${url}`);
+				forbidden++;
 				continue;
 			}
 			console.log(`Crawling root page of ${url} from ${index}`);
@@ -43,7 +49,9 @@ const main = async () => {
 
 				const links = [...register.keys()];
 				await markKnownUrls(db, url, index, links, true);
+				added++;
 			} catch (error) {
+				errored++;
 				console.error(`Error while crawling ${url}`, error);
 			}
 
@@ -52,6 +60,8 @@ const main = async () => {
 	}
 
 	await client.close();
+
+	console.log(`Done, added ${added} urls, ignored ${ignored} urls, forbidden ${forbidden} urls, errored ${errored} urls`);
 };
 
 main();
