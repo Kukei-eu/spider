@@ -154,6 +154,11 @@ export default {
 		// 'https://developers.google.com',
 		'https://core.telegram.org',
 		'https://www.w3.org',
+		'https://tailwindcss.com',
+		'https://tailwindui.com',
+		'https://getbootstrap.com',
+		'https://chakra-ui.com',
+		'https://mui.com',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
