@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "test": "node --test src",
+    "test": "node --test",
     "cover": "c8 --all node --test",
     "crawl:auto": "node -r dotenv/config src/crawl-auto.js",
     "crawl:roots": "node -r dotenv/config src/crawl-roots.js",

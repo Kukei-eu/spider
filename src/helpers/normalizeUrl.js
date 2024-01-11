@@ -1,3 +1,4 @@
 export const normalizeUrl = (url) => {
-	return url.replace(/\/$/, '');
+	// Replace all trailing slashes with nothing
+	return url.replace(/\/+$/, '');
 };
