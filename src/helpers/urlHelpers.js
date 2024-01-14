@@ -40,7 +40,25 @@ export const hrefSeemsUseful = (href) => {
 	return true;
 };
 
+const w3Filter = (url) => {
+	// Not W3, not relevant, not forbidden.
+	if (url.startsWith('https://www.w3.org/') === false) return false;
+
+	// Now we flip the login, brace your brain: return false when it's NOT forbidden
+	// Return true when it IS forbidden.
+
+	if (url.startsWith('https://www.w3.org/TR')) return false;
+	if (url.startsWith('https://www.w3.org/developers')) return false;
+	if (url.startsWith('https://www.w3.org/WAI')) return false;
+	if (url.startsWith('https://www.w3.org/International')) return false;
+
+	return true;
+};
+
 export const isForbidden = (url) => {
+	if (w3Filter(url)) {
+		return true;
+	}
 	if (url.startsWith('https://www.postgresql.org/message-id/')) return true;
 	if (url.startsWith('https://www.zachleat.com/twitter/')) return true;
 	if (url.startsWith('https://www.mongodb.com/blog/channel')) return true;
