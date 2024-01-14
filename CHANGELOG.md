@@ -1,3 +1,16 @@
+# [1.7.0](https://github.com/Kukei-eu/spider/compare/v1.6.0...v1.7.0) (2024-01-14)
+
+
+### Bug Fixes
+
+* replace multiple trailing slashes ([03d44e9](https://github.com/Kukei-eu/spider/commit/03d44e93d70658c86bdbfae39038830d75128687))
+
+
+### Features
+
+* add result log ([a643995](https://github.com/Kukei-eu/spider/commit/a643995606a546061b589d88e1586e00c8104645))
+* use allow list for w3 links ([690505a](https://github.com/Kukei-eu/spider/commit/690505a0f0cc7f2d1fe44d1001a0162bdf712659))
+
 # [1.6.0](https://github.com/Kukei-eu/spider/compare/v1.5.0...v1.6.0) (2024-01-08)
 
 
