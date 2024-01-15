@@ -159,6 +159,13 @@ export default {
 		'https://getbootstrap.com',
 		'https://chakra-ui.com',
 		'https://mui.com',
+		'https://docs.flutter.dev',
+		'https://gohugo.io',
+		'https://preactjs.com',
+		'https://www.solidjs.com',
+		'https://docs.nodebb.org',
+		'https://expressjs.com',
+		'https://hapi.dev',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
