@@ -93,8 +93,7 @@ export default {
 		'https://brucefwebster.com',
 		'https://www.a11yproject.com',
 		'https://betterwebtype.com',
-		'https://fvsch.com',
-		'https://ishadeed.com'
+		'https://fvsch.com'
 	],
 	'docs': [
 		'https://example.com',
