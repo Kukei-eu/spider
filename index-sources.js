@@ -168,6 +168,7 @@ export default {
 		'https://docs.nodebb.org',
 		'https://expressjs.com',
 		'https://hapi.dev',
+		'https://design-system.service.gov.uk',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
