@@ -21,3 +21,4 @@ services:
     env_file:
       - .env
     command: "yarn do:stats"
+    network_mode: "host"
