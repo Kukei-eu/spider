@@ -6,16 +6,19 @@ services:
       - .env
     command: "yarn crawl:auto"
     restart: unless-stopped
+    network_mode: "host"
   crawl-roots:
     build: .
     env_file:
       - .env
     command: "yarn crawl:roots"
+    network_mode: "host"
   crawl-roots-all:
     build: .
     env_file:
       - .env
     command: "yarn crawl:roots --all"
+    network_mode: "host"
   do-stats:
     build: .
     env_file:
