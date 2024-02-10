@@ -169,6 +169,7 @@ export default {
 		'https://expressjs.com',
 		'https://hapi.dev',
 		'https://design-system.service.gov.uk',
+		'https://docs.cypress.io',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
