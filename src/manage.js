@@ -7,23 +7,25 @@ const indexSettings = {
 	filterableAttributes: ['url', 'lang', 'hostname'],
 	distinctAttribute: 'url',
 	sortableAttributes: ['crawledAt'],
+	pagination: {
+		maxTotalHits: 100,
+	}
 };
 
 const setupIndex = async () => {
-	await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}blogs`);
-	await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}docs`);
-	await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}magazines`);
+	// await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}blogs`);
+	// await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}docs`);
+	// await meiliClient.createIndex(`${MEILI_INDEX_PREFIX}magazines`);
 	await meiliClient.index(`${MEILI_INDEX_PREFIX}blogs`).updateSettings(indexSettings);
 	await meiliClient.index(`${MEILI_INDEX_PREFIX}docs`).updateSettings(indexSettings);
 	await meiliClient.index(`${MEILI_INDEX_PREFIX}magazines`).updateSettings(indexSettings);
 };
 
 const main = async () => {
-	// await setupIndex();
-
 	console.log(await meiliClient.getTasks({
 		statuses: [
 			'enqueued',
+			'processing'
 		]
 	}));
 };
