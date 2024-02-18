@@ -95,6 +95,7 @@ export default {
 		'https://betterwebtype.com',
 		'https://fvsch.com',
 		'https://piccalil.li',
+		'https://tqdev.com',
 	],
 	'docs': [
 		'https://example.com',
