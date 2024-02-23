@@ -16,8 +16,8 @@ const main = async () => {
 	const [client, db] = await getMongo();
 	let ignored = 0;
 	let added = 0;
-	let forbidden = 0;
-	let errored = 0;
+	let forbidden = [];
+	let errored = [];
 
 	for (const index of Object.keys(sources)) {
 		for (const url of sources[index]) {
@@ -32,7 +32,7 @@ const main = async () => {
 			const robots = await getRobots(url);
 			if (!robots.isAllowed(url)) {
 				console.log(`Robots.txt disallowed crawling of ${url}`);
-				forbidden++;
+				forbidden.push(url);
 				continue;
 			}
 			console.log(`Crawling root page of ${url} from ${index}`);
@@ -51,7 +51,7 @@ const main = async () => {
 				await markKnownUrls(db, url, index, links, true);
 				added++;
 			} catch (error) {
-				errored++;
+				errored.push(url);
 				console.error(`Error while crawling ${url}`, error);
 			}
 
@@ -61,7 +61,7 @@ const main = async () => {
 
 	await client.close();
 
-	console.log(`Done, added ${added} urls, ignored ${ignored} urls, forbidden ${forbidden} urls, errored ${errored} urls`);
+	console.log(`Done, added ${added} urls, ignored ${ignored} urls, forbidden ${forbidden.join(',')} urls, errored ${errored} urls`);
 };
 
 main();
