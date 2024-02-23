@@ -96,6 +96,7 @@ export default {
 		'https://fvsch.com',
 		'https://piccalil.li',
 		'https://tqdev.com',
+		'https://tonsky.me',
 	],
 	'docs': [
 		'https://example.com',
