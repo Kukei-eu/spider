@@ -55,13 +55,65 @@ const w3Filter = (url) => {
 	return true;
 };
 
+const githubFilter = (url) => {
+	if (url.startsWith('https://docs.github.com/') === false) return false;
+
+	if (url.includes('enterprise-server@')) return true;
+};
+
+const phpFilter = (url) => {
+	if (url.startsWith('https://www.php.net') === false) return false;
+
+	if (url === 'https://www.php.net/') return false;
+	if (url === 'https://www.php.net') return false;
+	if (url.endsWith('docs.php')) return false;
+	if (url.includes('manual/en')) return false;
+
+	return true;
+};
+
+const mongoFilter = (url) => {
+	if (url.startsWith('https://www.mongodb.com/') === false) return false;
+
+	if (url === 'https://www.mongodb.com/' || url === 'https://www.mongodb.com') return false;
+	if (url.startsWith('https://www.mongodb.com/docs')) return false;
+
+	return true;
+};
+
+const postgresFilter = (url) => {
+	if (url.startsWith('https://www.postgresql.org') === false) return false;
+
+	if (url === 'https://www.postgresql.org/' || url === 'https://www.postgresql.org') return false;
+	if (url.includes('docs')) return false;
+
+	return true;
+};
+
+const curlFilter = (url) => {
+	if (url.startsWith('https://curl.se/') === false) return false;
+
+	if (url === 'https://curl.se/' || url === 'https://curl.se') return false;
+	if (url.includes('/docs')) return false;
+
+	return true;
+};
+
+const domainFilters = [
+	w3Filter,
+	githubFilter,
+	phpFilter,
+	mongoFilter,
+	postgresFilter,
+	curlFilter,
+];
+
 export const isForbidden = (url) => {
-	if (w3Filter(url)) {
-		return true;
+	for (const filter of domainFilters) {
+		if (filter(url)) return true;
 	}
-	if (url.startsWith('https://www.postgresql.org/message-id/')) return true;
+
 	if (url.startsWith('https://www.zachleat.com/twitter/')) return true;
-	if (url.startsWith('https://www.mongodb.com/blog/channel')) return true;
 
 	return false;
 };
