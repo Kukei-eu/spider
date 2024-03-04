@@ -97,6 +97,7 @@ export default {
 		'https://piccalil.li',
 		'https://tqdev.com',
 		'https://tonsky.me',
+		'https://zachholman.com',
 	],
 	'docs': [
 		'https://example.com',
