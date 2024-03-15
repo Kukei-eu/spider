@@ -181,6 +181,7 @@ export default {
 		'https://testing-library.com',
 		'https://mochajs.org',
 		'https://istanbul.js.org',
+		'https://caniuse.com',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
