@@ -98,7 +98,6 @@ export default {
 		'https://tqdev.com',
 		'https://tonsky.me',
 		'https://zachholman.com',
-		'https://seirdy.one',
 		'https://www.ellyloel.com',
 	],
 	'docs': [
