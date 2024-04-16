@@ -99,6 +99,7 @@ export default {
 		'https://tonsky.me',
 		'https://zachholman.com',
 		'https://www.ellyloel.com',
+		'https://mspiechowicz.com',
 	],
 	'docs': [
 		'https://example.com',
