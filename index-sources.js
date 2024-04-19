@@ -100,6 +100,7 @@ export default {
 		'https://zachholman.com',
 		'https://www.ellyloel.com',
 		'https://mspiechowicz.com',
+		'https://www.grooovinger.com',
 	],
 	'docs': [
 		'https://example.com',
