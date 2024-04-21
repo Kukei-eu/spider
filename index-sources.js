@@ -185,6 +185,10 @@ export default {
 		'https://mochajs.org',
 		'https://istanbul.js.org',
 		'https://caniuse.com',
+		'https://fastify.dev',
+		'https://nestjs.com',
+		'https://docs.drone.io',
+
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
