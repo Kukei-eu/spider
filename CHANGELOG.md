@@ -1,3 +1,18 @@
+# [1.8.0](https://github.com/Kukei-eu/spider/compare/v1.7.0...v1.8.0) (2024-04-21)
+
+
+### Bug Fixes
+
+* better filters for smaller index ([94fcc3b](https://github.com/Kukei-eu/spider/commit/94fcc3b35a5f416eba9b08fa5b3318973f5511dc))
+* better filters for smaller index ([b90fd83](https://github.com/Kukei-eu/spider/commit/b90fd83dbe8601af429ae85f79d57836f0ddab16))
+
+
+### Features
+
+* update deps ([254f386](https://github.com/Kukei-eu/spider/commit/254f386c55371867f71d007b7dd3b08a7812cafe))
+* use network host ([91f1831](https://github.com/Kukei-eu/spider/commit/91f1831e903230291cdfc03d9b6ccd69af392b70))
+* use network host ([386cfe0](https://github.com/Kukei-eu/spider/commit/386cfe0814d0d345b02c5f7fdcdf50f0f5ba921e))
+
 # [1.7.0](https://github.com/Kukei-eu/spider/compare/v1.6.0...v1.7.0) (2024-01-14)
 
 
