@@ -39,3 +39,18 @@ export const hrefSeemsUseful = (href) => {
 
 	return true;
 };
+
+export const makeAllowList = (hostname, allowedPathsInclude)	=> (url) => {
+	// Not from the same hostname
+	if (url.startsWith(`https://${hostname}`) === false) return false;
+
+	// Allow home page
+	if (url === `https://${hostname}/` || url === `https://${hostname}`) return false;
+
+	for (const path of allowedPathsInclude) {
+		if (url.includes(path)) return false;
+	}
+
+	// Deny
+	return true;
+};

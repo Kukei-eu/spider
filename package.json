@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "cover": "c8 --all node --test",
+    "cover": "c8 --reporter lcov --all node --test",
     "crawl:auto": "node -r dotenv/config src/crawl-auto.js",
     "crawl:roots": "node -r dotenv/config src/crawl-roots.js",
     "crawl:roots:all": "node -r dotenv/config src/crawl-roots.js --all",

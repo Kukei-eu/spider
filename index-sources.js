@@ -188,6 +188,7 @@ export default {
 		'https://fastify.dev',
 		'https://nestjs.com',
 		'https://docs.drone.io',
+		'https://www.jenkins.io',
 
 	],
 	'magazines': [

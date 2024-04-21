@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
 
-import { hrefSeemsUseful } from '../urlHelpers.js';
+import { hrefSeemsUseful, isForbidden } from '../urlHelpers.js';
 
 describe('hrefSeemsUseful', () => {
 	it('should return true for relative links', () => {
@@ -46,5 +46,42 @@ describe('hrefSeemsUseful', () => {
 		assert.strictEqual(hrefSeemsUseful('data:'), false);
 		assert.strictEqual(hrefSeemsUseful('data:foo'), false);
 		assert.strictEqual(hrefSeemsUseful('data:foo/bar'), false);
+	});
+});
+
+describe('isForbidden', () => {
+	describe('curl.se', () => {
+		it('should allow home page', () => {
+			assert.strictEqual(isForbidden('https://curl.se/'), false);
+			assert.strictEqual(isForbidden('https://curl.se'), false);
+		});
+		it('should allow docs', () => {
+			assert.strictEqual(isForbidden('https://curl.se/docs'), false);
+			assert.strictEqual(isForbidden('https://curl.se/docs/'), false);
+			assert.strictEqual(isForbidden('https://curl.se/docs/foo'), false);
+		});
+
+		it('should deny else', () => {
+			assert.strictEqual(isForbidden('https://curl.se/foo'), true);
+			assert.strictEqual(isForbidden('https://curl.se/foo/bar'), true);
+		});
+	});
+
+	describe('jenkins.io', () => {
+		it('should allow /doc', () => {
+			assert.strictEqual(isForbidden('https://www.jenkins.io/doc'), false);
+			assert.strictEqual(isForbidden('https://www.jenkins.io/doc/'), false);
+			assert.strictEqual(isForbidden('https://www.jenkins.io/doc/foo'), false);
+		});
+		it('should allow /security', () => {
+			assert.strictEqual(isForbidden('https://www.jenkins.io/security'), false);
+			assert.strictEqual(isForbidden('https://www.jenkins.io/security/'), false);
+			assert.strictEqual(isForbidden('https://www.jenkins.io/security/foo'), false);
+		});
+		it('should deny /projects', () => {
+			assert.strictEqual(isForbidden('https://www.jenkins.io/projects'), true);
+			assert.strictEqual(isForbidden('https://www.jenkins.io/projects/'), true);
+			assert.strictEqual(isForbidden('https://www.jenkins.io/projects/foo'), true);
+		});
 	});
 });
