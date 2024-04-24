@@ -194,6 +194,7 @@ export default {
 		'https://dart.dev',
 		'https://docs.serverpod.dev',
 		'https://dartfrog.vgv.dev',
+		'https://docs.codemagic.io',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
