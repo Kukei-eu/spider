@@ -192,7 +192,7 @@ export default {
 		'https://www.jenkins.io',
 		'https://dart.dev',
 		'https://docs.serverpod.dev',
-
+		'https://dartfrog.vgv.dev',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
