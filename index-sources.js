@@ -102,6 +102,7 @@ export default {
 		'https://mspiechowicz.com',
 		'https://www.grooovinger.com',
 		'https://verygood.ventures',
+		'https://blog.gskinner.com',
 	],
 	'docs': [
 		'https://example.com',
