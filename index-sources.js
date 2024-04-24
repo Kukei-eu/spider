@@ -189,6 +189,8 @@ export default {
 		'https://nestjs.com',
 		'https://docs.drone.io',
 		'https://www.jenkins.io',
+		'https://dart.dev',
+		'https://docs.serverpod.dev',
 
 	],
 	'magazines': [
