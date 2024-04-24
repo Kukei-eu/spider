@@ -101,6 +101,7 @@ export default {
 		'https://www.ellyloel.com',
 		'https://mspiechowicz.com',
 		'https://www.grooovinger.com',
+		'https://verygood.ventures',
 	],
 	'docs': [
 		'https://example.com',
