@@ -195,6 +195,10 @@ export default {
 		'https://docs.serverpod.dev',
 		'https://dartfrog.vgv.dev',
 		'https://docs.codemagic.io',
+		'https://trunkrs.dev',
+		'https://freemarker.apache.org',
+		'https://nixos.org',
+		'https://jupyter-client.readthedocs.io',
 	],
 	'magazines': [
 		'https://smashingmagazine.com',
