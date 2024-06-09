@@ -103,6 +103,7 @@ export default {
 		'https://www.grooovinger.com',
 		'https://verygood.ventures',
 		'https://blog.gskinner.com',
+		'https://www.arewewebyet.org',
 	],
 	'docs': [
 		'https://example.com',
