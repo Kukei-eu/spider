@@ -104,6 +104,7 @@ export default {
 		'https://verygood.ventures',
 		'https://blog.gskinner.com',
 		'https://www.arewewebyet.org',
+		'https://blog.jhnr.ch/',
 	],
 	'docs': [
 		'https://example.com',
