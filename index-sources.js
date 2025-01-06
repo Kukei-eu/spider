@@ -106,6 +106,7 @@ export default {
 		'https://www.arewewebyet.org',
 		'https://dgerrells.com',
 		'https://blog.jhnr.ch/',
+		'https://ishadeed.com/',
 	],
 	'docs': [
 		'https://example.com',
