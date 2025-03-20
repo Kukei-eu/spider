@@ -208,6 +208,7 @@ export default {
 		'https://smashingmagazine.com',
 		'https://www.digitalocean.com/community/tutorials',
 		'https://web.dev',
+		'https://thelibre.news',
 		// 'https://devblogs.microsoft.com', // Also huge, check later
 		// 'https://dev.to', // mediocre quality, sometimes very low
 		// 'https://css-tricks.com' // big one, continue once having stable index snapshot
