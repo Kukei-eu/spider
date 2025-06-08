@@ -107,6 +107,7 @@ export default {
 		'https://dgerrells.com',
 		'https://blog.jhnr.ch/',
 		'https://ishadeed.com/',
+		'https://wattenberger.com/',
 		'https://sebastiano.tronto.net',
 	],
 	'docs': [
