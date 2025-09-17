@@ -109,6 +109,7 @@ export default {
 		'https://ishadeed.com/',
 		'https://wattenberger.com/',
 		'https://sebastiano.tronto.net',
+		'https://wiki.gardiol.org',
 	],
 	'docs': [
 		'https://example.com',
